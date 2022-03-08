@@ -13,3 +13,15 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
+Function limpiarRut(rut As String) As String
+
+   Dim nuevoRut As String
+   
+   nuevoRut = Trim(rut)
+   nuevoRut = Replace(nuevoRut, " ", "")
+   nuevoRut = Replace(nuevoRut, vbTab, "")
+
+   limpiarRut = nuevoRut
+
+End Function
