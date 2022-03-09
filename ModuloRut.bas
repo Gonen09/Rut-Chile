@@ -112,6 +112,29 @@ Public Function rutDigito(ByVal Rut As Long) As String
    
 End Function
 
+Function verificaRut(rut As String) As Boolean
+
+   Dim nuevoRut As String
+   Dim dve As String
+   Dim dvs As String
+
+   nuevoRut = UCase(rut)
+   nuevoRut = Replace(nuevoRut, ".", "")
+   nuevoRut = Replace(nuevoRut, "-", "")
+
+   dve = Right(nuevoRut, 1)
+   nuevoRut = Left(nuevoRut, Len(nuevoRut) - 1)
+
+   dvs = rutDigito(CLong(nuevoRut))
+
+   If (dve = dvs) Then 
+      verificaRut = True
+   Else
+      verificaRut = False
+   End If
+
+End Function
+
 Function formatearRut(rut As String) As String
 
    Dim nuevoRut As String
