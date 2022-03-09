@@ -21,3 +21,25 @@ Private Sub btnSalir_Click()
    Application.DisplayAlerts = True
    Application.Quit
 End Sub
+
+Private Sub btnVerificar_Click()
+
+   Dim rut As String
+   
+   rut = limpiarRut(txtRut.Text)
+   
+   If esRut(rut) Then
+   
+         If (verificaRut(rut)) Then
+            txtRespuesta.Caption = "RUT ingresado es válido"
+            txtSalida.Caption = formatearRut(rut)
+         Else
+            txtRespuesta.Caption = "RUT ingresado es no válido"
+            txtSalida.Caption = rut
+         End If
+   Else
+         txtRespuesta.Caption = "Formato de RUT no válido"
+         txtSalida.Caption = rut
+   End If
+   
+End Sub
