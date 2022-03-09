@@ -37,9 +37,6 @@ Function esRut(rut As String) As Boolean
             If (Len(dv) <> 1) Then
                esRut = False
                Exit Function
-            Else
-               esRut = False
-               Exit Function
             End If
          Else
             esRut = False
@@ -57,18 +54,31 @@ Function esRut(rut As String) As Boolean
          
          If (dv <> "" And dv <> " " And dv <> vbTab) Then
 
-            If (((dv > -1) And (dv < 10)) Or (dv = "K")) Then
+            If (isnumeric(dv)) Then 
 
-               nuevoRut = Left(nuevoRut, Len(nuevoRut) - 1)
-      
-               If (IsNumeric(nuevoRut)) Then
-                  esRut = True
-               Else
+               If Not ((dv > -1) And (dv < 10)) Then
+
                   esRut = False
+                  Exit Function
                End If
+            
+            Else
+            
+               If (dv <> "K") Then
+                  esRut = False
+                  Exit Function
+               End If
+
+            End If
+
+            nuevoRut = Left(nuevoRut, Len(nuevoRut) - 1)
+
+            If (IsNumeric(nuevoRut)) Then
+               esRut = True
             Else
                esRut = False
             End If
+
          Else
             esRut = False
          End If
@@ -125,7 +135,7 @@ Function verificaRut(rut As String) As Boolean
    dve = Right(nuevoRut, 1)
    nuevoRut = Left(nuevoRut, Len(nuevoRut) - 1)
 
-   dvs = rutDigito(CLong(nuevoRut))
+   dvs = rutDigito(CLng(nuevoRut))
 
    If (dve = dvs) Then 
       verificaRut = True

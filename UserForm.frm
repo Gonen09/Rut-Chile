@@ -34,7 +34,7 @@ Private Sub btnVerificar_Click()
             txtRespuesta.Caption = "RUT ingresado es válido"
             txtSalida.Caption = formatearRut(rut)
          Else
-            txtRespuesta.Caption = "RUT ingresado es no válido"
+            txtRespuesta.Caption = "RUT ingresado no es válido"
             txtSalida.Caption = rut
          End If
    Else
