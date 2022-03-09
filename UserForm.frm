@@ -94,3 +94,26 @@ Function esRut (rut as String) as Boolean
    End If
 
 End Function
+
+Function formatearRut(rut As String) As String
+
+   Dim nuevoRut As String
+   Dim dv As String
+
+   nuevoRut = UCase(rut)
+
+   If ((Instr(nuevoRut, ".") > 0) and (Instr(nuevoRut, "-") > 0)) Then 
+      formatearRut = rut
+   Else
+
+      dv = right(nuevoRut, 1)
+      nuevoRut = Left(nuevoRut, Len(nuevoRut) - 1)
+
+      nuevoRut = Format(nuevoRut, "##,###,###")
+      nuevoRut = Replace(nuevoRut, ",", ".")
+      nuevoRut = nuevoRut & "-" & dv
+      
+      formatearRut = nuevoRut
+   End If
+
+End Function
