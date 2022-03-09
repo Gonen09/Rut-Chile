@@ -13,3 +13,11 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
+Private Sub btnSalir_Click()
+    
+   Application.DisplayAlerts = False
+   ThisWorkbook.Save
+   Application.DisplayAlerts = True
+   Application.Quit
+End Sub
