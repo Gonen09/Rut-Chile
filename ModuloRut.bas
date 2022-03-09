@@ -81,6 +81,37 @@ Function esRut(rut As String) As Boolean
 
 End Function
 
+Public Function rutDigito(ByVal Rut As Long) As String
+
+   Dim Digito As Integer
+   Dim Contador As Integer
+   Dim Multiplo As Integer
+   Dim Acumulador As Integer
+
+   Contador = 2
+   Acumulador = 0
+   
+   While Rut <> 0
+   
+      Multiplo = (Rut Mod 10) * Contador
+      Acumulador = Acumulador + Multiplo
+      Rut = Rut \ 10
+      Contador = Contador + 1
+      
+      If Contador = 8 Then
+         Contador = 2
+      End If
+      
+   Wend
+   
+   Digito = 11 - (Acumulador Mod 11)
+   rutDigito = CStr(Digito)
+   
+   If Digito = 10 Then rutDigito = "K"
+   If Digito = 11 Then rutDigito = "0"
+   
+End Function
+
 Function formatearRut(rut As String) As String
 
    Dim nuevoRut As String
