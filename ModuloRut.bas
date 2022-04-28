@@ -11,6 +11,18 @@ Function limpiarRut(rut As String) As String
 
 End Function
 
+Function quitarFormato(rut As String) As String
+
+   Dim nuevoRut As String   
+
+   nuevoRut = UCase(rut)
+   nuevoRut = Replace(nuevoRut, ".", "")
+   nuevoRut = Replace(nuevoRut, "-", "")
+
+   quitarFormato = nuevoRut
+
+End Function
+
 Function esRut(rut As String) As Boolean
 
    Dim nuevoRut As String
