@@ -22,7 +22,8 @@ Function quitarFormato(rut As String) As String
    quitarFormato = nuevoRut
 
 End Function
-
+   
+'Verifica RUT sin formato
 Function esRut(rut As String) As Boolean
 
    Dim numeroRut As String
@@ -30,7 +31,6 @@ Function esRut(rut As String) As Boolean
    
    If (rut <> "") Then
    
-      'RUT sin formato
       If (Len(rut) > 7 And Len(rut) < 10) Then
 
          numeroRut = Left(rut, Len(rut) - 1)
@@ -41,39 +41,16 @@ Function esRut(rut As String) As Boolean
 
             If (dv <> "" And dv <> " " And dv <> vbTab) Then
 
-               If (isnumeric(dv)) Then 
-      
-                  If (dv > -1) And (dv < 10) Then
-                     esRut = True
-                  Else
-                     esRut = False
-                  End If
-            
-               Else
-               
-                  If (dv = "K") Then
-                     esRut = True
-                  Else
-                     esRut = False
-                  End If
-
+               If (dv > -1 And dv < 10) Or (dv = "K") Then
+                  esRut = True
                End If
 
-            Else
-               esRut = False
             End If
-
-         Else
-            esRut = False
          End If
-
-      Else
-         esRut = False
       End If
-
-   Else
-      esRut = False
    End If 
+
+   esRut = False
 
 End Function
 
