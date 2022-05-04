@@ -105,23 +105,15 @@ End Function
 
 Function formatearRut(rut As String) As String
 
-   Dim nuevoRut As String
+   Dim numeroRut As String
    Dim dv As String
 
-   nuevoRut = UCase(rut)
+   numeroRut = Left(rut, Len(rut) - 1)
+   dv = Right(rut, 1)
 
-   If ((InStr(nuevoRut, ".") > 0) And (InStr(nuevoRut, "-") > 0)) Then
-      formatearRut = rut
-   Else
-
-      dv = Right(nuevoRut, 1)
-      nuevoRut = Left(nuevoRut, Len(nuevoRut) - 1)
-
-      nuevoRut = Format(nuevoRut, "##,###,###")
-      nuevoRut = Replace(nuevoRut, ",", ".")
-      nuevoRut = nuevoRut & "-" & dv
-      
-      formatearRut = nuevoRut
-   End If
+   numeroRut = Format(numeroRut, "##,###,###")
+   numeroRut = Replace(numeroRut, ",", ".")
+   
+   formatearRut = numeroRut & "-" & dv
 
 End Function
