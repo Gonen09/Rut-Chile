@@ -25,68 +25,40 @@ End Function
 
 Function esRut(rut As String) As Boolean
 
-   Dim nuevoRut As String
+   Dim numeroRut As String
    Dim dv As String
-   Dim punto As Integer
-   Dim guion As Integer
-   Dim lista() As String
    
-   nuevoRut = UCase(rut)
-
-   If (nuevoRut <> "") Then
+   If (rut <> "") Then
    
-      'RUT con formato
-      If ((InStr(nuevoRut, ".") > 0) And (InStr(nuevoRut, "-") > 0)) Then
-
-         punto = Len(nuevoRut) - Len(Replace(nuevoRut, ".", ""))
-         guion = Len(nuevoRut) - Len(Replace(nuevoRut, "-", ""))
-
-         If ((punto = 2) And (guion = 1)) Then
-
-            lista = Split(nuevoRut, "-")
-            dv = lista(1)
-
-            If (Len(dv) <> 1) Then
-               esRut = False
-               Exit Function
-            End If
-         Else
-            esRut = False
-            Exit Function
-         End If
-      End If
-
-      nuevoRut = Replace(nuevoRut, ".", "")
-      nuevoRut = Replace(nuevoRut, "-", "")
-
       'RUT sin formato
-      If (Len(nuevoRut) > 7 And Len(nuevoRut) < 10) Then
+      If (Len(rut) > 7 And Len(rut) < 10) Then
 
-         dv = Right(nuevoRut, 1)
-         
-         If (dv <> "" And dv <> " " And dv <> vbTab) Then
+         numeroRut = Left(rut, Len(rut) - 1)
 
-            If (isnumeric(dv)) Then 
+         If (IsNumeric(numeroRut)) Then
 
-               If Not ((dv > -1) And (dv < 10)) Then
+            dv = Right(rut, 1)
 
-                  esRut = False
-                  Exit Function
-               End If
+            If (dv <> "" And dv <> " " And dv <> vbTab) Then
+
+               If (isnumeric(dv)) Then 
+      
+                  If (dv > -1) And (dv < 10) Then
+                     esRut = True
+                  Else
+                     esRut = False
+                  End If
             
-            Else
-            
-               If (dv <> "K") Then
-                  esRut = False
-                  Exit Function
+               Else
+               
+                  If (dv = "K") Then
+                     esRut = True
+                  Else
+                     esRut = False
+                  End If
+
                End If
 
-            End If
-
-            nuevoRut = Left(nuevoRut, Len(nuevoRut) - 1)
-
-            If (IsNumeric(nuevoRut)) Then
-               esRut = True
             Else
                esRut = False
             End If
@@ -94,12 +66,14 @@ Function esRut(rut As String) As Boolean
          Else
             esRut = False
          End If
+
       Else
          esRut = False
       End If
+
    Else
       esRut = False
-   End If
+   End If 
 
 End Function
 
