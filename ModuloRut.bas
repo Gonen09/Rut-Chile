@@ -87,18 +87,13 @@ End Function
 
 Function verificaRut(rut As String) As Boolean
 
-   Dim nuevoRut As String
+   Dim numeroRut As String
    Dim dve As String
    Dim dvs As String
 
-   nuevoRut = UCase(rut)
-   nuevoRut = Replace(nuevoRut, ".", "")
-   nuevoRut = Replace(nuevoRut, "-", "")
-
-   dve = Right(nuevoRut, 1)
-   nuevoRut = Left(nuevoRut, Len(nuevoRut) - 1)
-
-   dvs = rutDigito(CLng(nuevoRut))
+   numeroRut = Left(rut, Len(rut) - 1)
+   dve = Right(rut, 1)
+   dvs = rutDigito(CLng(numeroRut))
 
    If (dve = dvs) Then 
       verificaRut = True
