@@ -25,6 +25,7 @@ End Sub
 Private Sub btnVerificar_Click()
 
    Dim rut As String: rut = txtRut.Text 
+   Dim rutOriginal As String: rutOriginal = rut
 
    If (rut <> "") Then
 
@@ -41,18 +42,18 @@ Private Sub btnVerificar_Click()
             txtSalida.ForeColor = vbGreen
          Else
             txtRespuesta.Caption = "RUT ingresado no es válido"
-            txtSalida.Caption = rut
+            txtSalida.Caption = rutOriginal
             txtSalida.ForeColor = vbRed
          End If
       Else
          txtRespuesta.Caption = "Formato de RUT no válido"
-         txtSalida.Caption = rut
+         txtSalida.Caption = rutOriginal
          txtSalida.ForeColor = vbBlue
       End If
 
    Else
       txtRespuesta.Caption = "Debe ingresar un RUT"
-      txtSalida.Caption = rut
+      txtSalida.Caption = rutOriginal
       txtSalida.ForeColor = vbGrayText
    End If
 
