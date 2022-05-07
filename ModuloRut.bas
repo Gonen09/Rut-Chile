@@ -41,8 +41,20 @@ Function esRut(rut As String) As Boolean
 
             If (dv <> "" And dv <> " " And dv <> vbTab) Then
 
-               If (dv > -1 And dv < 10) Or (dv = "K") Then
-                  esRut = True
+               If (isnumeric(dv)) Then 
+      
+                  If (dv > -1) And (dv < 10) Then
+                     esRut = True
+                     Exit Function
+                  End If
+            
+               Else
+               
+                  If (dv = "K") Then
+                     esRut = True
+                     Exit Function
+                  End If
+
                End If
 
             End If
