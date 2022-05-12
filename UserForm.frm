@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} UserForm 
-   Caption         =   "RUT CHILE: Validar y Formatear"
-   ClientHeight    =   4890
+   Caption         =   "RUT CHILE: Validar y Formatear por Gonen09"
+   ClientHeight    =   5460
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   5145
@@ -24,9 +24,9 @@ End Sub
 
 Private Sub btnVerificar_Click()
 
-   Dim rut As String: rut = txtRut.Text 
+   Dim rut As String: rut = txtRut.Text
    Dim rutOriginal As String: rutOriginal = rut
-
+      
    If (rut <> "") Then
 
       rut = limpiarRut(rut)
@@ -34,19 +34,17 @@ Private Sub btnVerificar_Click()
       
       If esRut(rut) Then
    
-         txtSalida.ForeColor = vbGrayText
-   
          If (verificaRut(rut)) Then
-            txtRespuesta.Caption = "RUT ingresado es v√°lido"
+            txtRespuesta.Caption = "RUT ingresado es v·lido"
             txtSalida.Caption = formatearRut(rut)
             txtSalida.ForeColor = vbGreen
          Else
-            txtRespuesta.Caption = "RUT ingresado no es v√°lido"
+            txtRespuesta.Caption = "RUT ingresado no es v·lido"
             txtSalida.Caption = rutOriginal
             txtSalida.ForeColor = vbRed
          End If
       Else
-         txtRespuesta.Caption = "Formato de RUT no v√°lido"
+         txtRespuesta.Caption = "Formato de RUT no v·lido"
          txtSalida.Caption = rutOriginal
          txtSalida.ForeColor = vbBlue
       End If
@@ -58,3 +56,4 @@ Private Sub btnVerificar_Click()
    End If
 
 End Sub
+
