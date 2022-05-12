@@ -2,8 +2,8 @@ Attribute VB_Name = "ModuloRut"
 
 ' /*-------------------------------[ ModuloRut ]---------------------------------/
 '  Autor       : Gonen09
-'  Descripción : Módulo para validar y formatear RUT en Excel VBA
-'  Versión     : 1.0
+'  Descripcion : Modulo para validar y formatear RUT en Excel VBA
+'  Version     : 1.0
 '  Fecha       : 07/03/2022
 '  Correo      : gonen.rt@gmail.com
 '  GitHub      : Gonen09
@@ -78,7 +78,7 @@ Function esRut(rut As String) As Boolean
 
 End Function
 
-'Módulo obtenido de la web, autor no encontrado, créditos a su autor.  
+'Modulo obtenido de la web, autor no encontrado, creditos a su autor.  
 Public Function rutDigito(ByVal Rut As Long) As String
 
    Dim Digito As Integer
